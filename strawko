@@ -1,0 +1,48 @@
+generateMagicSquer_lexical
+size: 3
+    0s
+  2   7   6 
+  9   5   1 
+  4   3   8 
+
+size: 4
+  599s
+
+
+generateMagicSquer_force
+size: 3
+  2   7   6 
+  9   5   1 
+  4   3   8 
+    0s
+
+size: 4
+    0s
+  1   2  15  16 
+ 12  14   3   5 
+ 13   7  10   4 
+  8  11   6   9 
+
+size: 5
+  599s
+
+
+generateMagicSquer_smartPermu
+size: 3
+  2   7   6 
+  9   5   1 
+  4   3   8 
+    0s
+
+size: 4
+    0s
+  1   2  15  16 
+ 12  14   3   5 
+ 13   7  10   4 
+  8  11   6   9 
+
+size: 5
+  599s
+
+
+end
