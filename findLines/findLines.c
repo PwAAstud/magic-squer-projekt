@@ -48,18 +48,19 @@ int main(int argc, const char* argv[]){
     for(uint32_t i = 0; i < size; i++) dgtCound[i] = 0;
 
     uint32_t goodNum = 0;
+    uint32_t all = 0;
     for(;;){
         // for(uint32_t i = 0; i < size; i++) printf("%d ", ocuapy[i]); printf("\n");
         uint32_t sum = sumPerm(ocuapy, size);
         // printf("sum %d\n", sum);
-
+        all++;
         if(sum == goodSum){
             for(uint32_t i = 0; i < size; i++){
                 if(!ocuapy[i]) continue;
-                printf("%2d ", i+1);
+                // printf("%2d ", i+1);
                 dgtCound[i]++;
             }
-            printf("\n");
+            // printf("\n");
             goodNum++;
         }
         if(nextPerm(ocuapy, size)) break;
@@ -67,7 +68,8 @@ int main(int argc, const char* argv[]){
 
     for(uint32_t i = 0; i < size; i++) printf("%3d ", i+1); printf("\n");
     for(uint32_t i = 0; i < size; i++) printf("%3d ", dgtCound[i]); printf("\n");
-    // printf("good num %3d\n", goodNum);
+    printf("good num %3d\n", goodNum);
+    printf("stosunek %f\n", (float)goodNum/all);
     // printf("min num  %3d\n", 2*sideSize+2);
     
 }

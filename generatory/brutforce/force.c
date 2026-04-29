@@ -4,13 +4,12 @@
 
 #include<stdio.h>
 static void printSquer(squerVal* squer, uint32_t sideSize){
-    printf("\r\x1B[%dA", sideSize+1);
+    printf("\r\x1B[%dA", sideSize);
     for(uint32_t y = 0; y < sideSize; y++){
         for(uint32_t x = 0; x < sideSize; x++) printf("%3d", squer[x]);
         squer += sideSize;
         printf("\n");
     }
-    printf("\n");
 }
 
 // typedef struct{
@@ -22,6 +21,42 @@ static void printSquer(squerVal* squer, uint32_t sideSize){
 
 //     uint32_t sideSize;
 // } squerData;
+
+static uint32_t specOrder(uint32_t i, uint32_t sideSize){
+// 0 1 2 3
+// 4 5 6 7
+// 8 9 a b
+// c d e f
+
+// 0 1 2 3
+// 4 7 8 9
+// 5 a c d
+// 6 b e f
+
+// 0 1 2 3 y0 0
+//   4 5 6 x0 1
+//   7 8 9 y1 1
+//     a b x1 2
+//     c d y2 2
+//       e x2 3
+//       f y3 3
+    uint32_t witchLine = 0;
+    uint32_t lineLen = sideSize;
+    for(;;){
+        // y
+        if(i < lineLen) return witchLine/2*sideSize + (i + (witchLine+1)/2);
+        i -= lineLen;
+        lineLen--;
+        witchLine++;
+        
+        // x
+        if(i < lineLen) return (i + (witchLine+1)/2)*sideSize + witchLine/2;
+        i -= lineLen;
+        witchLine++;
+    }
+    exit(1);
+}
+
 
 void generateMagicSquer_force(squerVal* out, uint32_t sideSize){
     const uint32_t size = sideSize*sideSize;
@@ -43,8 +78,11 @@ void generateMagicSquer_force(squerVal* out, uint32_t sideSize){
 
         // printf("\n");
     }
-    for(uint32_t i = 0; i < size;){
-        // printf("%3d/%3d\r", i, size);
+    // for(uint32_t i=0; i<sideSize;i++) printf("\n");
+
+    for(uint32_t ii = 0; ii < size;){
+        uint32_t i = specOrder(ii, sideSize);
+        // printf("%d ", ii);
         // for(uint32_t a = 0; a < sideSize; a++) printf("%2d ", xSums[a]);
         // printf("\n");
         // for(uint32_t a = 0; a < sideSize; a++) printf("%2d ", ySums[a]);
@@ -58,9 +96,12 @@ void generateMagicSquer_force(squerVal* out, uint32_t sideSize){
         squerVal newNum;
         if(out[i] == 0 && (x == sideSize-1 || y == sideSize-1) ){
             if(y == sideSize-1) {
-                if(x == sideSize-1) newNum = leftSum;
-                else if(x == 0) newNum = rightSum;
-                else newNum = xSums[x];
+                // if(x == sideSize-1){
+                //     newNum = leftSum;
+                // }
+                // else if(x == 0) newNum = rightSum;
+                // else 
+                newNum = xSums[x];
             }
             else newNum = ySums[y];
 
@@ -89,7 +130,7 @@ void generateMagicSquer_force(squerVal* out, uint32_t sideSize){
         ||  isLeft && newNum > leftSum
         ||  isRight && newNum > rightSum
         ){
-            i--;
+            ii--;
         }else{
             ocupade[newNum] = true;
             out[i]    = newNum;
@@ -97,8 +138,10 @@ void generateMagicSquer_force(squerVal* out, uint32_t sideSize){
             ySums[y] -= newNum;
             if(isLeft) leftSum -= out[i];
             if(isRight) rightSum -= out[i];
-            i++;
+            ii++;
         }
+
+        if(ii == size && (leftSum != 0 || rightSum != 0)) ii--;
     }
 
 

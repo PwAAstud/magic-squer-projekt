@@ -36,12 +36,23 @@ void testGenerationSpeed(void (*gen)(squerVal*, uint32_t), unsigned int timeLimi
 }
 
 int main() {
-    printf("generateMagicSquer_lexical\n");
-    testGenerationSpeed(generateMagicSquer_lexical,60);
-    // printf("generateMagicSquer_force\n");
-    // testGenerationSpeed(generateMagicSquer_force, 999999);
+    // printf("generateMagicSquer_lexical\n");
+    // testGenerationSpeed(generateMagicSquer_lexical,60);
+    printf("generateMagicSquer_force\n");
+    testGenerationSpeed(generateMagicSquer_force, 600);
     // printf("generateMagicSquer_smartPermu\n");
     // testGenerationSpeed(generateMagicSquer_smartPermu, 9999999);
+
+// #include"./probForce/probForce.h"
+// #include"./setForce/setForce.h"
+    printf("generateMagicSquer_annealing\n");
+    testGenerationSpeed(generateMagicSquer_annealing,600);
+    printf("generateMagicSquer_probForce\n");
+    testGenerationSpeed(generateMagicSquer_probForce,600);
+    printf("generateMagicSquer_setForce\n");
+    testGenerationSpeed(generateMagicSquer_probForce,600);
+
+
 
     printf("end\n");
     return 0;

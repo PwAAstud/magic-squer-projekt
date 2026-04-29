@@ -1,0 +1,42 @@
+x:0 y:0; avalibe:64; newN:64
+x:1 y:0; avalibe:63; newN:63
+x:2 y:0; avalibe:62; newN:62
+x:3 y:0; avalibe:61; newN:61
+x:4 y:0; avalibe:60; newN:60
+x:5 y:0; avalibe:59; newN:59
+x:0 y:1; avalibe:56; newN:56
+x:0 y:2; avalibe:55; newN:55
+x:0 y:3; avalibe:54; newN:54
+x:0 y:4; avalibe:53; newN:53
+x:0 y:5; avalibe:52; newN:52
+x:1 y:1; avalibe:49; newN:49
+x:2 y:1; avalibe:48; newN:48
+x:3 y:1; avalibe:47; newN:47
+x:4 y:1; avalibe:46; newN:46
+x:5 y:1; avalibe:45; newN:45
+x:1 y:2; avalibe:42; newN:42
+x:1 y:3; avalibe:41; newN:41
+x:1 y:4; avalibe:40; newN:40
+x:1 y:5; avalibe:39; newN:39
+x:2 y:2; avalibe:36; newN:36
+x:3 y:2; avalibe:35; newN:35
+x:4 y:2; avalibe:34; newN:34
+x:2 y:3; avalibe:30; newN:30
+x:2 y:4; avalibe:29; newN:29
+x:3 y:3; avalibe:25; newN:25
+x:3 y:5; avalibe:19; newN:19
+x:4 y:4; avalibe:16; newN:16
+x:4 y:4; avalibe:16; newN:16
+x:4 y:4; avalibe:16; newN:16
+x:4 y:4; avalibe:16; newN:16
+x:4 y:4; avalibe:16; newN:16
+x:4 y:4; avalibe:16; newN:16
+x:7 y:7; avalibe:1; newN:1
+[8A 62 27  6 36 28 29 18 54
+ 20 17 64 48 34 24 37 16
+  2 35  7 45 39 42 40 50
+  3 60 49  8 15 32 47 46
+ 51 14 13 23 63  5 61 30
+ 53 41 52 19 22 38  4 31
+ 43 11 10 25 58 57 44 12
+ 26 55 59 56  1 33  9 21

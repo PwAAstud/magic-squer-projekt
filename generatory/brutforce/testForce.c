@@ -15,5 +15,5 @@ int main(){
     const uint32_t size = sideSize*sideSize;
     squerVal squer[size];
     generateMagicSquer_force(squer, sideSize);
-    printSquerA(squer, sideSize);
+    // printSquerA(squer, sideSize);
 }

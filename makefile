@@ -1,7 +1,11 @@
 src    = mainTread.c \
 generatory/brutforce/force.c \
 generatory/permutation/lexicalPerm.c \
-generatory/smartPermu/smartPermu.c
+generatory/smartPermu/smartPermu.c \
+generatory/annealing/annealing.c \
+generatory/probForce/probForce.c \
+generatory/setForce/setForce.c
+
 obj = $(addprefix .build/,$(notdir $(src:.c=.o)))
 target = a.out
 
