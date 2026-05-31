@@ -39,6 +39,7 @@ void testGenerationSpeed(void (*gen)(squerVal*, uint32_t), unsigned int timeLimi
     killAfter_arg thread_limit_arg = {.after = timeLimit};
     generateSquer_arg thread_gen_arg = {.gen = gen};
 
+    // for(uint32_t size = 3; size<=20; size++){
     for(uint32_t size = 3; 1; size++){
         time_t start;
         time(&start);
@@ -53,16 +54,9 @@ void testGenerationSpeed(void (*gen)(squerVal*, uint32_t), unsigned int timeLimi
         void* retVal;
         pthread_join(thread_gen, &retVal);
         pthread_cancel(thread_limit);
-
         
-        // printf("size: %d; ", size);
-        // time_t end;
-        // time(&end);
-        // printf("time: %ld\n", end-start);
         printf("\n");
-        // printf("time: %ld\n", clock()-start);
         if(retVal == PTHREAD_CANCELED) break;
-        // break;
     }
     printf("\n");
 }
@@ -76,12 +70,14 @@ int main() {
     // printf("generateMagicSquer_smartPermu\n");
     // testGenerationSpeed(generateMagicSquer_smartPermu, time);
 
-    printf("generateMagicSquer_annealing\n");
-    testGenerationSpeed(generateMagicSquer_annealing,time);
+    // printf("generateMagicSquer_annealing\n");
+    // testGenerationSpeed(generateMagicSquer_annealing,time);
     // printf("generateMagicSquer_probForce\n");
     // testGenerationSpeed(generateMagicSquer_probForce,time);
     // printf("generateMagicSquer_setForce\n");
     // testGenerationSpeed(generateMagicSquer_probForce,time);
+    printf("generateMagicSquer_evolve\n");
+    testGenerationSpeed(generateMagicSquer_evolve,time);
 
     printf("end\n");
     return 0;

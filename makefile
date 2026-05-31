@@ -4,7 +4,8 @@ generatory/permutation/lexicalPerm.c \
 generatory/smartPermu/smartPermu.c \
 generatory/annealing/annealing.c \
 generatory/probForce/probForce.c \
-generatory/setForce/setForce.c
+generatory/setForce/setForce.c \
+generatory/evolve/evolve.c
 
 obj = $(addprefix .build/,$(notdir $(src:.c=.o)))
 target = a.out
