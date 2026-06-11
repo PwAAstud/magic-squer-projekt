@@ -27,7 +27,6 @@ static void printSquerA(squerVal* squer, uint32_t sideSize){
 
 static void mixSquer(squerVal* out, squerVal* squerA, squerVal* squerB, uint32_t size){
     bool taken[size+1];
-    // for(uint32_t i=0; i< size+1; i++) taken[i] = false;
     memset(taken, false, (size+1)*sizeof(bool));
     uint32_t posB[size+1];
 
@@ -38,7 +37,6 @@ static void mixSquer(squerVal* out, squerVal* squerA, squerVal* squerB, uint32_t
 
     for (uint32_t i = 0; i < size; i++) {
         posB[squerB[i]] = i;
-        // out[i] = 0;
     }
     memset(out, 0, size * sizeof(squerVal));
 
@@ -95,7 +93,6 @@ static uint32_t squerCost(squerVal* list, uint32_t sideSize, uint32_t goodSum){
     // row
     for(uint32_t y = 0; y < sideSize; y++){
         sum = 0;
-        // for(uint32_t x = 0; x < sideSize; x++) sum += list[y*sideSize+x];
         reedFrom = list + y*sideSize;
         for(uint32_t x = 0; x < sideSize; x++) sum += *(reedFrom++);
         retVal += dif(sum, goodSum);
@@ -104,7 +101,6 @@ static uint32_t squerCost(squerVal* list, uint32_t sideSize, uint32_t goodSum){
     // colm
     for(uint32_t x = 0; x < sideSize; x++){
         sum = 0;
-        // for(uint32_t y = 0; y < sideSize; y++) sum += list[y*sideSize+x];
         reedFrom = list + x;
         for(uint32_t x = 0; x < sideSize; x++){
             sum += *reedFrom;
@@ -115,7 +111,6 @@ static uint32_t squerCost(squerVal* list, uint32_t sideSize, uint32_t goodSum){
 
     // left
     sum = 0;
-    // for(uint32_t i = 0; i < sideSize; i++) sum += list[i*sideSize+i];
     reedFrom = list;
     for(uint32_t i = 0; i < sideSize; i++){
         sum += *reedFrom;
@@ -125,7 +120,6 @@ static uint32_t squerCost(squerVal* list, uint32_t sideSize, uint32_t goodSum){
 
     // right
     sum = 0;
-    // for(uint32_t i = 0; i < sideSize; i++) sum += list[i*sideSize + (sideSize-1-i)];
     reedFrom = list + sideSize - 1;
     for(uint32_t i = 0; i < sideSize; i++){
         sum += *reedFrom;
@@ -212,6 +206,7 @@ static void generatePops(squer* pops, uint32_t* popsSize_p, uint32_t sideSize){
         pops[popsSize++] = newSquer;
     }
 
+    // fragment kodu dla reprodukcji asueksulanej
     // for (uint32_t i = popsSize; i-- > 0; ){
     //     squer newSquer = pops[popsSize];
     //     copySquer(newSquer.l, pops[i].l, size);
@@ -243,21 +238,10 @@ void generateMagicSquer_evolve(squerVal* out, uint32_t sideSize){
     }
 
     for(;true;){
-        // for(uint32_t i=0; i < 5; i++){
-        //     removeBestPops(pops, &popSize);
-        //     generatePops(pops, &popSize, sideSize);
-        // }
-        
         for(uint32_t i = 0; i < popSize;i++){
             randSquer(pops[i].l, size);
             pops[i].cost = squerCost(pops[i].l, sideSize, goodSum);
         }
-
-        // saveBestPops(pops, popSize, 1);
-        // for(uint32_t i = 1; i < popSize;i++){
-        //     randSquer(pops[i].l, size);
-        //     pops[i].cost = squerCost(pops[i].l, sideSize, goodSum);
-        // }
         
         uint32_t bestPop = UINT32_MAX;
         for(uint32_t i=0; i < 1000; i++){
@@ -279,14 +263,7 @@ void generateMagicSquer_evolve(squerVal* out, uint32_t sideSize){
             bestPop = thisBestPop;
             // printf("%d\r", i);
         }
-        // printf("\n");
-        // uint32_t retI = 0;
-        // for(uint32_t i=1; i < popSize; i++){
-        //     if(pops[i].cost < pops[retI].cost) retI = i;
-        // }
-        // if(pops[retI].cost == 0) break;
         if(bestPop == 0) break;
-        // break;
     }
     
     // for(uint32_t i=0; i < popSize; i++){

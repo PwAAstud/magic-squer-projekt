@@ -63,6 +63,9 @@ void testGenerationSpeed(void (*gen)(squerVal*, uint32_t), unsigned int timeLimi
 
 int main() {
     int time = 600;
+
+    // tutaj jest wybierane które matody mają być przetestowanie
+    
     // printf("generateMagicSquer_lexical\n");
     // testGenerationSpeed(generateMagicSquer_lexical, time);
     // printf("generateMagicSquer_force\n");

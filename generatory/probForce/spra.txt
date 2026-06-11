@@ -1,1 +1,0 @@
-nowe metoda indeksowania specOrder ogromnie przyspiesza obliczanie

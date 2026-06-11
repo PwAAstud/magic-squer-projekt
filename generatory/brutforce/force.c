@@ -12,16 +12,6 @@ static void printSquer(squerVal* squer, uint32_t sideSize){
     }
 }
 
-// typedef struct{
-//     squerVal* squer;
-//     bool* ocupade;
-//     uint32_t* xSums;
-//     uint32_t* ySums;
-//     uint32_t crosSum;
-
-//     uint32_t sideSize;
-// } squerData;
-
 static uint32_t specOrder(uint32_t i, uint32_t sideSize){
 // 0 1 2 3
 // 4 5 6 7
@@ -96,11 +86,6 @@ void generateMagicSquer_force(squerVal* out, uint32_t sideSize){
         squerVal newNum;
         if(out[i] == 0 && (x == sideSize-1 || y == sideSize-1) ){
             if(y == sideSize-1) {
-                // if(x == sideSize-1){
-                //     newNum = leftSum;
-                // }
-                // else if(x == 0) newNum = rightSum;
-                // else 
                 newNum = xSums[x];
             }
             else newNum = ySums[y];

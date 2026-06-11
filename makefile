@@ -24,4 +24,4 @@ $(target): $(obj) $(src)
 
 clear:
 	rm -rd .build
-	rm -f a.out
+	rm -f $(target)

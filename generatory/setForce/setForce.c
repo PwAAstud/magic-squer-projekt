@@ -241,7 +241,6 @@ void generateMagicSquer_setForce(squerVal* out, uint32_t sideSize){
                 if(!avalibe[i]) continue;
                 p[n++] = i;
             }
-            // TODO poprawic okreslanie setSize
             filteringSet set = {.set = p, .size = n, .searchSize = n};
             doubleFaceFilter(&set, ySums[y], sideSize-x, sideSize);
             doubleFaceFilter(&set, xSums[x], sideSize-y, sideSize);
@@ -249,14 +248,6 @@ void generateMagicSquer_setForce(squerVal* out, uint32_t sideSize){
                 doubleFaceFilter(&set, leftSum, sideSize-y, sideSize);
             if(isRight)
                 doubleFaceFilter(&set, rightSum, rightSetSize, sideSize);
-
-            // if(n == set.searchSize) printf("x:%d y:%d; avalibe:%d; newN:%d\n", x,y, n, set.searchSize);
-            // filterUnuseNumbers(&set, ySums[y], sideSize-x);
-            // filterUnuseNumbers(&set, xSums[x], sideSize-y);
-            // if(isLeft)
-            //     filterUnuseNumbers(&set, leftSum, sideSize-y);
-            // if(isRight)
-            //     filterUnuseNumbers(&set, rightSum, rightSetSize);
             
             cellOption[cellId].n = set.searchSize;
             if(set.searchSize == 0){

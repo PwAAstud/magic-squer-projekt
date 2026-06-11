@@ -55,10 +55,6 @@ static void printSquer(squerVal* squer, uint32_t sideSize){
 }
 
 void generateMagicSquer_annealing(squerVal* out, uint32_t sideSize){
-    // printf("%d\n", dif(1,3));
-    // printf("%d\n", dif(3,1));
-    // return 0;
-
     srand(time(NULL));
     const uint32_t size = sideSize * sideSize;
     const uint32_t goodSum = sideSize*(sideSize*sideSize + 1)/2;
@@ -68,7 +64,6 @@ void generateMagicSquer_annealing(squerVal* out, uint32_t sideSize){
 
     const int randRange = size*size;
     int temperature = randRange/2;
-    // int minTemper = ((randRange + randRange<<1) >> 8) + 1; // = randRange*3/256 + 1
     int minTemper = 1;
     int coling = 0;
 
@@ -76,7 +71,6 @@ void generateMagicSquer_annealing(squerVal* out, uint32_t sideSize){
     for(uint32_t i=0;i<size;i++) futureSquer[i] = out[i];
     uint32_t curentSquer = squerCost(out, sideSize, goodSum);
     // for(uint32_t i=0;i<sideSize;i++) printf("\n");
-    // for(int trySwap = 0; trySwap < 999999; trySwap++){
     for(;;){
         // printSquer(out, sideSize);
         // printf("temperature: %10d\n", temperature);
@@ -90,21 +84,14 @@ void generateMagicSquer_annealing(squerVal* out, uint32_t sideSize){
         
         uint32_t futureCost = squerCost(futureSquer, sideSize, goodSum);
         
-        // futureCost < curentSquer || !(futureCost < curentSquer) && rand
-        // (a || b)
-        // curentSquer < futureCost
         int goBad = rand()%randRange < (int)temperature;
-        // printf("%d ", goBad);
         if(futureCost < curentSquer || goBad){
-            // trySwap = 0;
             curentSquer = futureCost;
             swap(out[swapA],out[swapB]);
         }
         else{
             swap(futureSquer[swapA],futureSquer[swapB]);
         }
-        // temperature = temperature*coling + (1-coling)*minTemper;
-        // temperature = coling*(temperature - minTemper) + minTemper;
         coling++;
         if(coling > sideSize){
             coling = 0;
