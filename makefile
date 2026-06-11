@@ -1,4 +1,4 @@
-src    = mainTread.c \
+src    = mainThread.c \
 generatory/brutforce/force.c \
 generatory/permutation/lexicalPerm.c \
 generatory/smartPermu/smartPermu.c \
